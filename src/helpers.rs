@@ -3,7 +3,7 @@ use image::{DynamicImage, GenericImageView, imageops::{self, FilterType}};
 use std::env;
 
 // Define the desired width for the output
-pub static DESIRED_WIDTH: u32 = 300;
+pub static DESIRED_WIDTH: u32 = 100;
 
 // Define an ASCII gradient
 pub static ASCII_GRADIENT: &str = "B@$%&8#*+=-;:^'. ";
