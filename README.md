@@ -7,6 +7,7 @@ As a first step, this is a Rust executable were you can pass the path of a local
 
 Example:
 
+```
                       =8#%%#**^'
                     ;%@8&$$%%%8#*'
                   -&##88*#*#**&%$&#.
