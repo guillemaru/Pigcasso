@@ -1,21 +1,24 @@
 mod helpers;
 
 use std::io::{self};
-use helpers::{get_image_from_args, calculate_new_dimensions, process_image, calculate_step_size, convert_to_ascii};
+use helpers::{STEP_SIZE, get_args, calculate_new_dimensions, process_image, convert_to_ascii};
 
 fn main() -> io::Result<()> {
-    // Collect the command line arguments and open the image
-    let img = get_image_from_args()?;
+    let (img, desired_width) = get_args();
 
-    let (new_width, new_height) = calculate_new_dimensions(&img);
+    match (img, desired_width) {
+        (Ok(ref img), Ok(desired_width)) => {
+            let (new_width, new_height) = calculate_new_dimensions(&img, desired_width);
 
-    let pixels = process_image(&img, new_width, new_height);
+            let pixels = process_image(&img, new_width, new_height);
 
-    let step_size = calculate_step_size();
+            let ascii_art = convert_to_ascii(&pixels, new_width, new_height, STEP_SIZE);
 
-    let ascii_art = convert_to_ascii(&pixels, new_width, new_height, step_size);
-
-    println!("{}", ascii_art);
+            println!("{}", ascii_art);
+        }
+        (Err(e), _) => eprintln!("Failed to open image: {}", e),
+        (_, Err(e)) => eprintln!("Failed to parse width: {}", e),
+    }
 
     Ok(())
 }

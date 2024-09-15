@@ -3,9 +3,7 @@ This is my first go at playing with ASCII art.
 
 Ideally this repository will be a whole web application where the user uploads an image and it shows the ascii art, either done server side or client side with WebAssembly (in any case with Rust).
 
-As a first step, this is a Rust executable were you can pass the path of a local file and it will generate ascii art from it.
-
-I am fixing the size of the output to 50 characters.
+As a first step, this is a Rust executable were you can pass the path of a local file and the desired width and it will generate ascii art from it.
 
                       =8#%%#**^'
                     ;%@8&$$%%%8#*'
